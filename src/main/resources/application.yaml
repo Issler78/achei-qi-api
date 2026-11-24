@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: acheiQI
+  datasource:
+    url: jdbc:postgresql://localhost:5432/acheiqi
+    username: ${DATABASE_USERNAME}
+    password: ${DATABASE_PASSWORD}
