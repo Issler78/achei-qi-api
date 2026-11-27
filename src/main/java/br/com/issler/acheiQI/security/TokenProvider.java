@@ -1,5 +1,6 @@
 package br.com.issler.acheiQI.security;
 
+import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Value;
@@ -31,5 +32,26 @@ public class TokenProvider {
 
     private SecretKey getSecretKey() {
         return Keys.hmacShaKeyFor(key.getBytes());
+    }
+
+    public Boolean isValid(String token){
+        try {
+            getClaims(token);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public String getUsernameFromToken(String token){
+        return getClaims(token).getSubject();
+    }
+
+    private Claims getClaims(String token){
+        return Jwts.parser()
+                .verifyWith(getSecretKey())
+                .build()
+                .parseSignedClaims(token)
+                .getPayload();
     }
 }

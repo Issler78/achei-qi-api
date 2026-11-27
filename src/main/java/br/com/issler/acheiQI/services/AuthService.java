@@ -48,6 +48,7 @@ public class AuthService {
 
             // tentar logar usuario
             // por debaixo dos panos, o spring security vai chamar o UserDetailsServiceImpl.loadUserByUsername() para buscar o usuario no banco de dados
+            // apos, vai criptografar a senha informada e comparar com a senha do banco de dados
             Authentication auth = authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(
                             dto.email(), dto.password()
