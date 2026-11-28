@@ -16,3 +16,7 @@ spring:
         format_sql: true
 jwt:
   key: ${JWT_SECRET}
+supabase:
+  url: https://lxynqwhgtgimobhlhidp.supabase.co
+  service-key: ${SUPABASE_SERVICE_KEY}
+  bucket-name: acheiqi-images
